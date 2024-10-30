@@ -1,9 +1,8 @@
 import React from 'react';
 import Sidebar from './components/SideBar';
 import SideMenu from './components/SideMenu';
-import ChatWindow from './components/ChatWindow';
+// import ChatWindow from './components/ChatWindow';
 import ChatWindowUser from './components/ChatWindowUser';
-import Drawer from './components/Drawer';
 
 function App() {
   return (

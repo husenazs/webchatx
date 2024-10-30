@@ -84,10 +84,10 @@ const ChatHeader = () => {
                             tabIndex="-1"
                         >
                             <div className="py-1" role="none">
-                                <a href="#" className="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabIndex="-1" id="menu-item-0">New Groups</a>
-                                <a href="#" className="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabIndex="-1" id="menu-item-1">Starred Messages</a>
-                                <a href="#" className="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabIndex="-1" id="menu-item-2">Select Chats</a>
-                                <a href="#" className="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabIndex="-1" id="menu-item-3">Lock Apps</a>
+                                <a href="#" role='button' className="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabIndex="-1" id="menu-item-0">New Groups</a>
+                                <a href="#" role='button' className="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabIndex="-1" id="menu-item-1">Starred Messages</a>
+                                <a href="#" role='button' className="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabIndex="-1" id="menu-item-2">Select Chats</a>
+                                <a href="#" role='button' className="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabIndex="-1" id="menu-item-3">Lock Apps</a>
 
                             </div>
                         </div>
