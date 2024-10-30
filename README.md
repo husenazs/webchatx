@@ -18,7 +18,7 @@ WebchatX is a web-based user interface built with React, providing a fast, respo
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/username/webchatx-ui.git
+   git clone https://github.com/husenazs/webchatx-ui.git
 
 2. Navigate to the project directory:
    ```bash
@@ -30,4 +30,4 @@ WebchatX is a web-based user interface built with React, providing a fast, respo
 
 4. Run the application:
    ```bash
-   git clone https://github.com/username/webchatx-ui.git
+   git clone https://github.com/husenazs/webchatx-ui.git
