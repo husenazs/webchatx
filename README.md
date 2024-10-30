@@ -32,17 +32,6 @@ WebchatX is a web-based user interface built with React, providing a fast, respo
    ```bash
    git clone https://github.com/username/webchatx-ui.git
 
-## Project Structure
-
-webchatx-ui/
-├── public/                # Static files (HTML, icons, etc.)
-├── src/                   # Main source code
-│   ├── components/        # UI components
-│   ├── pages/             # Application pages
-│   ├── hooks/             # Custom hooks (optional)
-│   └── App.js             # Main application component
-├── README.md              # Project documentation
-└── package.json           # Dependencies and scripts
 
 
 
