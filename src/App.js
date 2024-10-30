@@ -7,11 +7,12 @@ import Drawer from './components/Drawer';
 
 function App() {
   return (
-    <div className='container mx-auto'>
+    <div className='mx-auto'>
       <div className="flex h-screen">
         <SideMenu />
         <Sidebar />
-        <ChatWindow />
+        {/* <ChatWindow /> */}
+        <ChatWindowUser />
       </div>
     </div>
   );
