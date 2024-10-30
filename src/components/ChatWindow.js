@@ -6,7 +6,7 @@ const ChatWindow = () => {
             <div className="text-center">
                 <img src={`${process.env.PUBLIC_URL}/new-logo-nexilis.png`} alt="WhatsApp Logo" className="mx-auto mb-4 h-auto max-w-[300px]" />
                 <p className="text-gray-500 mt-2">
-                    Send and receive messages without keeping your phone online.
+                    Test
                 </p>
             </div>
         </div>
