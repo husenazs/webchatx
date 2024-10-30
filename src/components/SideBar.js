@@ -5,7 +5,7 @@ import ChatList from './ChatList';
 
 const Sidebar = () => {
     return (
-        <div className="w-80 bg-white-100 h-screen border-r flex flex-col sidebar">
+        <div className="w-2/4 bg-white-100 h-screen border-r flex flex-col sidebar">
             <ChatHeader />
             <ChatList />
         </div>
