@@ -34,7 +34,7 @@ const ChatApp = () => {
             <ChatList setSelectedChat={setSelectedChat} />
             <div className="flex-1 flex flex-col">
                 <ChatWindow selectedChat={selectedChat} messages={messages} />
-                <MessageInput socket={socket} />
+                <MessageInput />
             </div>
         </div>
     );
