@@ -16,7 +16,7 @@ function Drawer({ isOpen, toggleDrawer }) {
         <>
             <div
                 ref={drawerRef}
-                className={`fixed w-80 bg-white h-full z-20 transform transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0 shadow-lg' : '-translate-x-full'
+                className={`fixed w-1/4 bg-white h-full z-20 transform transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0 shadow-lg' : '-translate-x-full'
                     }`}
             >
                 <div

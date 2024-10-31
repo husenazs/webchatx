@@ -3,15 +3,7 @@ import BubbleChat from './BubbleChat';
 import BubbleChatSelf from './BubbleChatSelf';
 import MessageInput from './MessageInput';
 
-const exampleMessages = [
-    { sender: 'self', text: "Cool. I'll let you know when it's done.", time: '17:47' },
-    { sender: 'Joestar', text: "That's awesome. I think our users will really appreciate the improvements.", time: '11:46' },
-];
-
-
-
-const ChatWindowUser = ({ selectedChat, messages, socket }) => {
-
+const ChatWindowUser = ({ selectedChat, messages, sendMessage }) => {
     return (
         <div className="w-full py-24 bg-slate-200">
             <div className="fixed top-0 w-full bg-white border-t dark:border-gray-600">
@@ -19,7 +11,7 @@ const ChatWindowUser = ({ selectedChat, messages, socket }) => {
                     <div className="w-12 h-12 rounded-full bg-gray-300 mr-3"></div>
                     <div className="flex-1">
                         <div className="flex justify-between">
-                            <h3 className="font-semibold">Joestar</h3>
+                            <h3 className="font-semibold">{selectedChat}</h3>
                         </div>
                         <p className="text-gray-600 text-sm truncate">Online 2 hours ago</p>
                     </div>
@@ -34,7 +26,7 @@ const ChatWindowUser = ({ selectedChat, messages, socket }) => {
                     )
                 ))}
             </div>
-            <MessageInput socket={socket} />
+            <MessageInput sendMessage={sendMessage} />
         </div>
     );
 };

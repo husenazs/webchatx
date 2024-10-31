@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import io from 'socket.io-client'; // Tambahkan baris ini
+import ChatWindowUser from './ChatWindowUser';
 
 const chats = [
     { name: 'Joestar', lastMessage: 'Chat terbaru', time: '25/08/2024' },
@@ -6,27 +8,57 @@ const chats = [
     { name: 'SweetCatz', lastMessage: 'Selamat Jalan', time: '21:20', unreadCount: 4 },
 ];
 
-const ChatList = () => {
-    const [activeIndex, setActiveIndex] = useState(0);
+const ChatList = ({ openChatWindowUser }) => {
+    const [selectedChat, setSelectedChat] = useState(null);
+    const [messages, setMessages] = useState([]);
+    const socket = io('http://localhost:9090'); // Pastikan ini terhubung ke server yang sesuai
 
-    const handleActive = (index) => {
-        setActiveIndex(index);
+    const initialMessages = {
+        Joestar: [
+            { sender: 'self', text: "Cool. I'll let you know when it's done.", time: '17:47' },
+            { sender: 'Joestar', text: "That's awesome. I think our users will really appreciate the improvements.", time: '11:46' },
+        ],
+        Eddie: [
+            { sender: 'self', text: "Hey, Eddie!", time: '22:10' },
+            { sender: 'Eddie', text: "Hai apa kabar?", time: '22:05' },
+        ],
+        SweetCatz: [
+            { sender: 'self', text: "Goodbye!", time: '21:25' },
+            { sender: 'SweetCatz', text: "Selamat Jalan", time: '21:20' },
+        ]
+    };
+
+    useEffect(() => {
+        if (socket) {
+            socket.on('receiveMessage', (message) => {
+                if (message.sender === selectedChat) {
+                    setMessages((prevMessages) => [...prevMessages, message]);
+                }
+            });
+        }
+
+        return () => {
+            if (socket) {
+                socket.off('receiveMessage');
+            }
+        };
+    }, [selectedChat, socket]);
+
+    const sendMessage = (text) => {
+        const message = { sender: 'self', text, time: new Date().toLocaleTimeString() };
+        socket.emit('sendMessage', { receiver: selectedChat, ...message });
+        setMessages((prevMessages) => [...prevMessages, message]);
     };
 
     return (
-        <div className="flex-1 overflow-y-auto p-4">
-            {/* Filter */}
-            <div className="flex space-x-3 mb-4">
-                <button onClick={() => handleActive(0)} className={`${activeIndex === 0 ? 'text-green-600 font-semibold' : 'text-gray-500'}`}>All</button>
-                <button onClick={() => handleActive(1)} className={`${activeIndex === 1 ? 'text-green-600 font-semibold' : 'text-gray-500'}`}>Unread</button>
-                <button onClick={() => handleActive(2)} className={`${activeIndex === 2 ? 'text-green-600 font-semibold' : 'text-gray-500'}`}>Favourites</button>
-                <button onClick={() => handleActive(3)} className={`${activeIndex === 3 ? 'text-green-600 font-semibold' : 'text-gray-500'}`}>Groups</button>
-            </div>
-
-            {/* Chat List */}
-            <div>
+        <div className="w-full h-full flex overflow-hidden">
+            <div className="w-full h-full bg-gray-100">
                 {chats.map((chat, index) => (
-                    <div key={index} className="flex items-center py-2 border-b hover:bg-gray-200 cursor-pointer">
+                    <div
+                        key={index}
+                        className="flex items-center py-2 px-2 border-b hover:bg-gray-200 cursor-pointer"
+                        onClick={() => openChatWindowUser(chat.name)}
+                    >
                         <div className="w-12 h-12 rounded-full bg-gray-300 mr-3"></div>
                         <div className="flex-1">
                             <div className="flex justify-between">
